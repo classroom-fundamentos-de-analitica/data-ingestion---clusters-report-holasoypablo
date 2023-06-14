@@ -46,14 +46,15 @@ def ingest_data():
             
             
     
-    print(cluster,"Su largo es",len(cluster))
-    print(cant,"Su largo es",len(cant))
-    print(porc,"Su largo es",len(porc))
-    print(princ,"Su largo es",len(princ))
-    print(df)
+    #print(cluster,"Su largo es",len(cluster))
+    #print(cant,"Su largo es",len(cant))
+    #print(porc,"Su largo es",len(porc))
+    #print(princ,"Su largo es",len(princ))
+    #print(df)
+    return df
         
 
 
 
 print('Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552')
-ingest_data()
+#ingest_data()
