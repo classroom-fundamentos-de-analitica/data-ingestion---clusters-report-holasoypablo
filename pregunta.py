@@ -31,8 +31,8 @@ def ingest_data():
         if(linea[0].isdigit()):
             numericos = linea[:linea.index('%')]
             cluster.append(int(numericos[0]))
-            cant.append(numericos[1])
-            porc.append(numericos[2].replace(',','.'))
+            cant.append(int(numericos[1]))
+            porc.append(float(numericos[2].replace(',','.')))
             if len(claves) != 0:
                 princ.append(claves)
             claves = ' '.join(linea[linea.index('%')+1:])
