@@ -34,13 +34,18 @@ def ingest_data():
             cant.append(int(numericos[1]))
             porc.append(float(numericos[2].replace(',','.')))
             if len(claves) != 0:
-                princ.append(claves)
+                #print('insertando',claves,'en princ\n')
+                princ.append(claves.replace('.',''))
+                #print("Nuevo princ es",princ,'\n')
             claves = ' '.join(linea[linea.index('%')+1:])
-            print("Claves es",claves)
+            #print("Claves es",claves)
         else:
-            claves = claves + ' '.join(linea)
-    princ.append(claves)
 
+            claves = claves + ' '.join(linea)
+
+    #print('insertando',claves,'en princ\n')
+    princ.append(claves.replace('.',''))
+    print(len(princ))
     data = {'cluster': cluster, 'cantidad_de_palabras_clave': cant, 'porcentaje_de_palabras_clave': porc, 'principales_palabras_clave':princ}
     df = pd.DataFrame(data)
             
@@ -52,9 +57,8 @@ def ingest_data():
     #print(princ,"Su largo es",len(princ))
     #print(df)
     return df
-        
 
-
-
-print('Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552')
-print(type(ingest_data().cluster.to_list()[0]))
+print('\n-----------------------Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552------------------------\n')
+ingest_data()
+print(ingest_data().principales_palabras_clave.to_list()[12])
+print('"pem fuel cell, solid-oxide fuel cell, deep-belief networks, energy optimisation, particles-size distributions, biomass gasification, exergy, battery management, hydrogen production, numeric simulation, system-identification"')
