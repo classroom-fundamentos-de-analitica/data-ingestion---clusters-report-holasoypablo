@@ -37,11 +37,11 @@ def ingest_data():
                 #print('insertando',claves,'en princ\n')
                 princ.append(claves.replace('.',''))
                 #print("Nuevo princ es",princ,'\n')
-            claves = ' '.join(linea[linea.index('%')+1:])
+            claves = ' '.join(linea[linea.index('%')+1:])+' '
             #print("Claves es",claves)
         else:
 
-            claves = claves + ' '.join(linea)
+            claves = claves + ' '.join(linea)+' '
 
     #print('insertando',claves,'en princ\n')
     princ.append(claves.replace('.',''))
@@ -60,5 +60,5 @@ def ingest_data():
 
 print('\n-----------------------Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552------------------------\n')
 ingest_data()
-print(ingest_data().principales_palabras_clave.to_list()[12])
-print('"pem fuel cell, solid-oxide fuel cell, deep-belief networks, energy optimisation, particles-size distributions, biomass gasification, exergy, battery management, hydrogen production, numeric simulation, system-identification"')
+print(ingest_data().principales_palabras_clave.to_list()[11])
+print('state of charge (soc) estimation, radial basis function, short-term load forecasting, computational fluid dynamics, generalized-regression neural network, monte-carlo simulation, multiple linear regression, power generation, nonlinear auto-regressive exogenous (narx) model neural networks, surrogate model, extreme gradient boosting')
