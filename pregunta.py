@@ -30,7 +30,7 @@ def ingest_data():
         linea = re.split('\s+', linea)
         if(linea[0].isdigit()):
             numericos = linea[:linea.index('%')]
-            cluster.append(numericos[0])
+            cluster.append(int(numericos[0]))
             cant.append(numericos[1])
             porc.append(numericos[2].replace(',','.'))
             if len(claves) != 0:
@@ -57,4 +57,4 @@ def ingest_data():
 
 
 print('Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552')
-#ingest_data()
+print(type(ingest_data().cluster.to_list()[0]))
