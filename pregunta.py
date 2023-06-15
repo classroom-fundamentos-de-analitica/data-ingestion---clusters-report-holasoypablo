@@ -35,7 +35,7 @@ def ingest_data():
             porc.append(float(numericos[2].replace(',','.')))
             if len(claves) != 0:
                 #print('insertando',claves,'en princ\n')
-                princ.append(claves.replace('.',''))
+                princ.append(claves.replace('.','').strip())
                 #print("Nuevo princ es",princ,'\n')
             claves = ' '.join(linea[linea.index('%')+1:])+' '
             #print("Claves es",claves)
@@ -44,8 +44,7 @@ def ingest_data():
             claves = claves + ' '.join(linea)+' '
 
     #print('insertando',claves,'en princ\n')
-    princ.append(claves.replace('.',''))
-    print(len(princ))
+    princ.append(claves.replace('.','').strip())
     data = {'cluster': cluster, 'cantidad_de_palabras_clave': cant, 'porcentaje_de_palabras_clave': porc, 'principales_palabras_clave':princ}
     df = pd.DataFrame(data)
             
@@ -59,6 +58,19 @@ def ingest_data():
     return df
 
 print('\n-----------------------Hecho por Juan Pablo Buitrago Diaz CC 1000.206.552------------------------\n')
-ingest_data()
-print(ingest_data().principales_palabras_clave.to_list()[11])
-print('state of charge (soc) estimation, radial basis function, short-term load forecasting, computational fluid dynamics, generalized-regression neural network, monte-carlo simulation, multiple linear regression, power generation, nonlinear auto-regressive exogenous (narx) model neural networks, surrogate model, extreme gradient boosting')
+
+
+respuestas_Correctas = ["maximum power point tracking, fuzzy-logic based control, photo voltaic (pv), photo-voltaic system, differential evolution algorithm, evolutionary algorithm, double-fed induction generator (dfig), ant colony optimisation, photo voltaic array, firefly algorithm, partial shade",
+                        "support vector machine, long short-term memory, back-propagation neural network, convolution neural network, speed wind prediction, energy consumption, wind power forecasting, extreme learning machine, recurrent-neural-network (rnn), radial basis function (rbf) networks, wind farm",
+                        "smart grid, wind power, reinforcement learning, energy management, energy efficiency, solar energy, deep reinforcement learning, demand-response (dr), internet of things, energy harvester, q-learning",
+                        "wind turbine, fault diagnosis, biodiesel, failure detection, response-surface methodology, condition monitoring, load forecasting, energy consumption forecast, anomalies detection, optimization-based algorithm, supervisory control and data acquisition"]
+
+for i in range (0,4):
+    if(ingest_data().principales_palabras_clave.to_list()[i] == respuestas_Correctas[i]):
+        print(ingest_data().principales_palabras_clave.to_list()[i])
+        print(respuestas_Correctas[i])
+        print('son iguales\n')
+    else:
+        print(ingest_data().principales_palabras_clave.to_list()[i])
+        print(respuestas_Correctas[i])
+        print('no son iguales\n')
